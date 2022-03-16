@@ -91,12 +91,10 @@
                 let vm = this;
                 axios.post('api/users', vm.user)
                     .then(({data}) => {
-                        // vm.$router.push('/users');
+                        vm.$router.push('/users');
                     })
                     .catch((error) => {
-                        console.log(error.response.data);
                         let errorsMessages = error.response.data;
-                        console.log(errorsMessages);
                         const errors = {};
                         if (Object.keys(errorsMessages).length) {
                            Object.keys(errorsMessages.errors).forEach((key) => {

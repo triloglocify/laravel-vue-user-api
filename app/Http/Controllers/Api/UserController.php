@@ -44,7 +44,7 @@ class UserController extends Controller
                 'errors' => $data->errors()
             ], 422);
         }
-echo "<pre>"; print_r('asdfsdf'); die;
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
