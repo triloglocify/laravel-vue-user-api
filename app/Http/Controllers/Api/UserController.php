@@ -25,19 +25,16 @@ class UserController extends Controller
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|min:8',
-            'addresses.address' => 'required',
-            'addresses.address.*' => 'required',
-            'addresses.cities' => 'required',
-            'addresses.cities.*' => 'required',
-            'addresses.state' => 'required',
+            'addresses.*.address' => 'required',
+            'addresses.*.cities' => 'required'
             'addresses.state.*' => 'required',
-            'addresses.country' => 'required',
             'addresses.country.*' => 'required',
-            'addresses.zipcode' => 'required',
             'addresses.zipcode.*' => 'required',
-            'addresses.home_number' => 'required',
             'addresses.home_number.*' => 'required',
-        ]);
+        ], [
+           'addresses.*.address.required' => 'The address field is required',
+           'addresses.*.cities.required' => 'The city field is required',
+       ]);
 
         if ($data->fails()) {
             return response()->json([
@@ -51,17 +48,15 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $addresses = $request->addresses;
-
-        foreach ($addresses['address'] as $key => $userAddress) {
+        foreach ($request->addresses as $key => $address) {
             UserInfo::create([
                 'user_id'      => $user->id,
-                'address'      => $userAddress,
-                'city'         => $addresses['cities'][$key],
-                'state'        => $addresses['state'][$key],
-                'country'      => $addresses['country'][$key],
-                'zipcode'      => $addresses['zipcode'][$key],
-                'home_number'  => $addresses['home_number'][$key]
+                'address'      => $address['address'],
+                'city'         => $address['cities'],
+                'state'        => $address['state'],
+                'country'      => $address['country'],
+                'zipcode'      => $address['zipcode'],
+                'home_number'  => $address['home_number'],
             ]);
         }
 
