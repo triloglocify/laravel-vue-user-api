@@ -8,6 +8,11 @@
         </div>
         <div class="row">
             <div class="col-md-12">
+                <ul>
+                  <li v-for="(error, key) in errors" :key="key">
+                    {{ error }}
+                  </li>
+                </ul>
                 <form>
                     <div class="form-group">
                         <label>Name</label>
@@ -24,12 +29,6 @@
                         <input type="password" class="form-control" v-model="user.password">
                         <span class="text-danger">{{ errors.password }}</span>
                     </div>
-
-                    <ul>
-                      <li v-for="(error, key) in errors" :key="key">
-                        {{ error }}
-                      </li>
-                    </ul>
 
                     <button type="button" class="btn btn-primary btn-sm float-right mb-3" @click="addMoreAddress()">Add More</button>
                     <template v-for="(addressNo, index) in addresses">

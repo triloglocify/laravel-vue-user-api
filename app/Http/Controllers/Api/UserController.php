@@ -26,7 +26,7 @@ class UserController extends Controller
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|min:8',
             'addresses.*.address' => 'required',
-            'addresses.*.cities' => 'required'
+            'addresses.*.cities' => 'required',
             'addresses.state.*' => 'required',
             'addresses.country.*' => 'required',
             'addresses.zipcode.*' => 'required',
