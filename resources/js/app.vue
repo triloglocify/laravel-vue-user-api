@@ -10,6 +10,7 @@
                 <div class="navbar-nav" v-else>
                     <router-link class="nav-item nav-link ml-3" to="/login">Login</router-link>
                     <router-link class="nav-item nav-link ml-3" to="/register">Register</router-link>
+                    <router-link class="nav-item nav-link ml-3" to="/checkboxes">Checkboxes</router-link>
                 </div>
             </div>
         </nav>

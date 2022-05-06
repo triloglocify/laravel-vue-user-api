@@ -9,6 +9,7 @@ import Dashboard from './components/dashboard';
 import Users from './components/dashboard/users';
 import UserCreate from './components/dashboard/users/create.vue';
 import UserInfo from './components/dashboard/users/info.vue';
+import Checkboxes from './components/checkboxes.vue';
 
 const routes = [
     {
@@ -23,6 +24,14 @@ const routes = [
         path: '/register',
         component: Register,
         name: "Register",
+        meta: {
+            hideForAuth: true
+        }
+    },
+    {
+        path: '/checkboxes',
+        component: Checkboxes,
+        name: "Checkboxs",
         meta: {
             hideForAuth: true
         }
