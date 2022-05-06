@@ -8,9 +8,8 @@
                 <label class="form-check-label" :for="product.name">
                   {{ product.name }}
                 </label>
-
-                <div class="form-check" v-for="varient in product.varient">
-                  <input class="form-check-input" type="checkbox" :id="varient.color" :value="varient.color" >
+                <div class="form-check" v-if="product.varient.length" v-for="(product, index) in product.varient" :key="product.color" >
+                  <input class="form-check-input" type="checkbox" :id="varient.color" :value="varient.color" v-model="selectedProducts[product.id].key">
                   <label class="form-check-label" :for="varient.color">
                     {{ varient.color }}
                   </label>
